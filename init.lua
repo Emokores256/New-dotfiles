@@ -2,7 +2,7 @@ vim.o.number = true -- use line numbers
 vim.o.relativenumber = true -- use relative line numbers
 vim.o.confirm = true -- confirm commands
 vim.o.expandtab = true -- convert tabs to spaces
-vim.o.shiftwidth= 4 -- amount to indent with << and >>
+vim.o.shiftwidth = 4 -- amount to indent with << and >>
 
 vim.o.tabstop = 4 -- how many space are shown per tab
 vim.o.softtabstop = 4 -- How many spaces are applied when pressing tab
@@ -30,5 +30,4 @@ vim.o.splitbelow = true
 vim.g.have_nerd_font = true
 
 -- Load lazy.nvim to lazy load the rest of the extensions
-require('config.lazy')
-
+require("config.lazy")

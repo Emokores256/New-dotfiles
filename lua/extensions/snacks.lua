@@ -20,4 +20,34 @@ return {
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
 	},
+	keys = {
+		{
+			"<leader>lg",
+			function()
+				Snacks.lazygit()
+			end,
+			desc = "Lazygit",
+		},
+		{
+			"<c-t>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "Toggle Terminal",
+		},
+		{
+			"<leader>e",
+			function()
+				Snacks.explorer()
+			end,
+			desc = "File Explorer",
+		},
+		-- {
+		-- 	"<leader>ff",
+		-- 	function()
+		-- 		Snacks.picker.files()
+		-- 	end,
+		-- 	desc = "Find Files",
+		-- }, -- can disable this to continue using fzf
+	},
 }

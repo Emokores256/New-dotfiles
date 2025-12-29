@@ -19,4 +19,4 @@ This config is a living setup — tuned for productivity, but always open to imp
 ---
 
 ![Screenshot 1](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2013-54-35.png) ![Screenshot 2](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2013-56-25.png)
-![Screenshot 3](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2013-59-17.png) ![File tree](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2014-15-49.png)
+![Screenshot 3](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2013-59-17.png) ![File tree](https://github.com/Emokores256/New-dotfiles/blob/main/assets/Screenshot%20From%202025-12-29%2019-06-41.png)

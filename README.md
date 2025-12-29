@@ -8,7 +8,8 @@ Welcome to my personal Neovim configuration, crafted for speed, clarity, modular
 - 🔌 **Plugins**: All extensions are organized under `lua/extensions` for easy navigation and modular loading.
 - ⚙️ **Modularity**: Designed with reproducibility in mind—each plugin and setting is isolated for clarity and ease of debugging.
 - 🧪 **Tweaks & Experiments**: Includes personal adjustments for LSP (managed using [Mason.nvim](https://github.com/mason-org/mason.nvim) and [blink-cmp](https://github.com/saghen/blink.cmp)), 
-    formatting using ([Conform.nvim](https://github.com/stevearc/conform.nvim)), and UI enhancements using [Snacks.nvim](https://github.com/folke/snacks.nvim).
+    formatting using ([Conform.nvim](https://github.com/stevearc/conform.nvim)), and UI enhancements using [Snacks.nvim](https://github.com/folke/snacks.nvim). I also created a floating terminal
+    from scratch (no plugins needed!).
 - 📦 **Plugin Manager**: Uses [lazy.nvim](https://github.com/folke/lazy.nvim) for efficient plugin loading and performance.
 - 🛠️ **Setup**: Works well across Linux environments (tested on Fedora), with CLI-first ergonomics and desktop compatibility.
 

@@ -44,3 +44,8 @@ end, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "gl", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open the next diagnostic in floated window" })
+
+-- Other keymaps
+vim.keymap.set("n", "<C-x>", ":bd<CR>", { desc = "Closes current buffer" })
+vim.keymap.set("n", "<C-Left>", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })
+vim.keymap.set("n", "<C-Right>", ":bnext<CR>", { silent = true, desc = "Next buffer" })

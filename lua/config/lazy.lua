@@ -54,4 +54,8 @@ require("lazy").setup({
 	},
 })
 
+-- Our keymaps
 require("config.keymaps")
+
+-- Our floating terminal
+require("config.Floaterminal")

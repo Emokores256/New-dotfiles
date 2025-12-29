@@ -278,7 +278,7 @@ return {
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
 				"eslint_d", -- Javascript linter
-				"pint", -- PHP formatter (for Laravel)
+				-- "pint", -- PHP formatter (for Laravel)
 				"cspell", -- code spell checker
 				"blade-formatter", -- blade file formatter
 				"phpcs", -- PHP linter,

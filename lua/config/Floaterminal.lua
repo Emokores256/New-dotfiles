@@ -52,4 +52,4 @@ end
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 
 -- set the keymap to toggle the terminal
-vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal)
+vim.keymap.set({ "n", "t" }, "<C-t>", toggle_terminal)

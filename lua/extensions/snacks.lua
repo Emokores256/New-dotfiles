@@ -28,13 +28,13 @@ return {
 			end,
 			desc = "Lazygit",
 		},
-		{
-			"<c-t>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "Toggle Terminal",
-		},
+		-- {
+		-- 	"<c-t>",
+		-- 	function()
+		-- 		Snacks.terminal()
+		-- 	end,
+		-- 	desc = "Toggle Terminal",
+		-- },
 		{
 			"<leader>e",
 			function()

@@ -45,7 +45,8 @@ vim.keymap.set("n", "gl", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open the next diagnostic in floated window" })
 
--- Other keymaps
-vim.keymap.set("n", "<C-x>", ":bd<CR>", { desc = "Closes current buffer" })
+-- Buffer manipulation keymaps
+vim.keymap.set("n", "<C-x>", ":bd<CR>", { silent = true, desc = "Closes current buffer" })
+vim.keymap.set("n", "<C-X>", ":bd!<CR>", { silent = true, desc = "Force closes current buffer and discards changes" })
 vim.keymap.set("n", "<C-Left>", ":bprevious<CR>", { silent = true, desc = "Previous buffer" })
 vim.keymap.set("n", "<C-Right>", ":bnext<CR>", { silent = true, desc = "Next buffer" })

@@ -36,6 +36,6 @@ return {
 		end
 
 		-- ... and there is more!
-		--  Check out: https://github.com/echasnovski/mini.nvim
+		--  Check out: https://github.com/nvim-mini/mini.nvim
 	end,
 }

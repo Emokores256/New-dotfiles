@@ -24,6 +24,8 @@ vim.o.smartcase = true
 
 vim.o.signcolumn = "yes" -- enable sign column always
 
+vim.opt.autowriteall = true -- auto-save
+
 vim.o.splitright = true
 vim.o.splitbelow = true
 

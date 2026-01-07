@@ -10,7 +10,7 @@ return {
 			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"saghen/blink.cmp",
-
+			"folke/neodev.nvim",
 			-- Useful status updates for LSP.
 			{ "j-hui/fidget.nvim", opts = {} },
 
@@ -254,11 +254,9 @@ return {
 							diagnostics = {
 								globals = { "vim" },
 							},
-							workspace = {
-								library = {
-									vim.env.VIMRUNTIME,
-								},
-							},
+							runtime = { version = "LuaJIT" },
+							workspace = { library = vim.api.nvim_get_runtime_file("", true), checkThirdParty = false },
+							telemetry = { enable = false },
 							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
 							-- diagnostics = { disable = { 'missing-fields' } },
 						},

@@ -7,6 +7,8 @@ return {
 			-- ["<C-h>"] = { "actions.toggle_hidden", mode = "n" },
 			["<Esc>"] = { "actions.close", mode = "n" },
 		},
+
+		view_options = { show_hidden = true }, -- show hidden files (dotfiles)
 	},
 	-- Optional dependencies
 	dependencies = { { "nvim-mini/mini.icons", opts = {} } },

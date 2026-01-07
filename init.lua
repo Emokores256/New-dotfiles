@@ -24,7 +24,18 @@ vim.o.smartcase = true
 
 vim.o.signcolumn = "yes" -- enable sign column always
 
-vim.opt.autowriteall = true -- auto-save
+vim.opt.autowriteall = true -- enable auto-save
+
+-- Autosave after leaving insert mode
+vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
+	group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
+	callback = function()
+		-- Check if the current buffer is modifiable and not readonly, then write silently
+		if vim.bo.modifiable and not vim.bo.readonly then
+			vim.cmd("silent! write")
+		end
+	end,
+})
 
 vim.o.splitright = true
 vim.o.splitbelow = true

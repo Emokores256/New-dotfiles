@@ -31,6 +31,8 @@ require("lazy").setup({
 	-- colorscheme that will be used when installing plugins.
 	install = { colorscheme = { "kanagawa" } },
 	-- install = { colorscheme = { "darcula-dark" } },
+	-- install = { colorscheme = { "catppuccin-mocha" } },
+
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 	ui = {

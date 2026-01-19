@@ -42,5 +42,7 @@ vim.o.splitbelow = true
 
 vim.g.have_nerd_font = true
 
+vim.g.material_style = "deep ocean"
+
 -- Load lazy.nvim to lazy load the rest of the extensions
 require("config.lazy")

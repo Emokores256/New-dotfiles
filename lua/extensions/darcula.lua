@@ -1,11 +1,13 @@
 return {
 	"xiantang/darcula-dark.nvim",
+	priority = 1000,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
 		-- setup must be called before loading
 		require("darcula").setup({
+			theme = "darcula",
 			override = function(c)
 				return {
 					background = "#333333",

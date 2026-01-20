@@ -37,12 +37,66 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
 	end,
 })
 
+-- -- disable Vim's default PHP (maybe even other languages) syntax
+-- vim.g.php_syntax_extensions_enabled = 0
+-- vim.cmd("syntax off")
+
+-- Fix Treesitter parser not working
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"php",
+		"lua",
+		"markdown",
+		"css",
+		"scss",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+	},
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
+
 vim.o.splitright = true
 vim.o.splitbelow = true
 
 vim.g.have_nerd_font = true
 
-vim.g.material_style = "deep ocean"
+-- for material theme:
+vim.g.material_style = "darker"
 
 -- Load lazy.nvim to lazy load the rest of the extensions
 require("config.lazy")
+
+-- load theme:
+vim.cmd("colorscheme palenight") -- or vim.cmd.colorscheme("your_theme")
+
+-- BlinkCmp autocomplete menu styling
+vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#5f87ff", bg = "#000000" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#5f87ff", bold = true })
+vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#5f87ff", bg = "#1e1e2e" })
+
+-- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
+-- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#5f87ff", bg = "NONE" })
+-- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#5f87ff", bold = true })
+-- 		vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#5f87ff", bg = "#1e1e2e" })
+-- 	end,
+-- })
+
+-- semantic token fixes
+-- vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "Function" })
+-- vim.api.nvim_set_hl(0, "@lsp.type.method", { link = "Function" })
+--
+-- -- For future auto theme switches
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+-- 	callback = function()
+-- 		vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "Function" })
+-- 		vim.api.nvim_set_hl(0, "@lsp.type.method", { link = "Function" })
+-- 	end,
+-- })

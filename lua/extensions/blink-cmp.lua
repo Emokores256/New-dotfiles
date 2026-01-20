@@ -68,7 +68,27 @@ return {
 		appearance = {
 			-- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 			-- Adjusts spacing to ensure icons are aligned
-			nerd_font_variant = "mono",
+			nerd_font_variant = "normal",
+		},
+
+		renderer = {
+			kind = "native",
+		},
+
+		windows = {
+			completion = {
+				border = "rounded",
+				winhighlight = "Normal:Normal,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,PmenuThumb:BlinkCmpScrollBarThumb",
+				padding = 1,
+				scrollbar = true,
+				shadow = true,
+			},
+			documentation = {
+				border = "rounded",
+				winhighlight = "Normal:Normal,FloatBorder:BlinkCmpMenuBorder",
+				padding = 1,
+				shadow = true,
+			},
 		},
 
 		completion = {
@@ -76,6 +96,22 @@ return {
 			-- Optionally, set `auto_show = true` to show the documentation after a delay.
 			documentation = { auto_show = true, auto_show_delay_ms = 500 },
 			ghost_text = { enabled = true, show_with_menu = false },
+			menu = {
+				draw = {
+					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					treesitter = { "lsp" },
+					components = {
+						label = {
+							text = function(ctx)
+								return require("colorful-menu").blink_components_text(ctx)
+							end,
+							highlight = function(ctx)
+								return require("colorful-menu").blink_components_highlight(ctx)
+							end,
+						},
+					},
+				},
+			},
 		},
 
 		sources = {

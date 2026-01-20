@@ -24,11 +24,12 @@ return {
 				"json",
 				"typescript",
 				"php",
+				"php_only",
 				"phpdoc",
 			},
 			sync_install = false,
 			auto_intall = true,
-			highlight = { enable = true },
+			highlight = { enable = true, additional_vim_regex_highlighting = false },
 			indent = { enable = true },
 
 			-- This is a block of code that is still not functioning. Most likely due to plugin re-write.

@@ -21,12 +21,12 @@ return {
 				-- `friendly-snippets` contains a variety of premade snippets.
 				--    See the README about individual language/framework/plugin snippets:
 				--    https://github.com/rafamadriz/friendly-snippets
-				-- {
-				--   'rafamadriz/friendly-snippets',
-				--   config = function()
-				--     require('luasnip.loaders.from_vscode').lazy_load()
-				--   end,
-				-- },
+				{
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+					end,
+				},
 			},
 			opts = {},
 		},
@@ -71,34 +71,30 @@ return {
 			nerd_font_variant = "normal",
 		},
 
-		renderer = {
-			kind = "native",
-		},
-
-		windows = {
-			completion = {
-				border = "rounded",
-				winhighlight = "Normal:Normal,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,PmenuThumb:BlinkCmpScrollBarThumb",
-				padding = 1,
-				scrollbar = true,
-				shadow = true,
-			},
-			documentation = {
-				border = "rounded",
-				winhighlight = "Normal:Normal,FloatBorder:BlinkCmpMenuBorder",
-				padding = 1,
-				shadow = true,
-			},
-		},
-
 		completion = {
 			-- By default, you may press `<c-space>` to show the documentation.
 			-- Optionally, set `auto_show = true` to show the documentation after a delay.
-			documentation = { auto_show = true, auto_show_delay_ms = 500 },
+			documentation = {
+				auto_show = true,
+				auto_show_delay_ms = 500,
+				treesitter_highlighting = true,
+				window = {
+					border = nil,
+					winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
+					winblend = 0,
+					scrollbar = true,
+				},
+			},
 			ghost_text = { enabled = true, show_with_menu = false },
 			menu = {
+				border = nil,
+				winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+				scrollbar = true,
+				auto_show_delay_ms = 0,
 				draw = {
 					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+					padding = 1,
+					gap = 1,
 					treesitter = { "lsp" },
 					components = {
 						label = {
@@ -115,13 +111,18 @@ return {
 		},
 
 		sources = {
-			default = { "lsp", "path", "snippets", "lazydev" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
 			providers = {
 				lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 			},
 		},
 
-		snippets = { preset = "luasnip" },
+		snippets = {
+			preset = "luasnip",
+			expand = function(snippet)
+				require("luasnip").lsp_expand(snippet)
+			end,
+		},
 
 		-- Blink.cmp includes an optional, recommended rust fuzzy matcher,
 		-- which automatically downloads a prebuilt binary when enabled.

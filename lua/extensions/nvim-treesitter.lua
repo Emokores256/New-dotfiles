@@ -23,13 +23,14 @@ return {
 				"javascript",
 				"json",
 				"typescript",
+				"typescriptreact",
 				"php",
 				"php_only",
 				"phpdoc",
 			},
 			sync_install = false,
 			auto_intall = true,
-			highlight = { enable = true, additional_vim_regex_highlighting = false },
+			highlight = { enable = true, additional_vim_regex_highlighting = true },
 			indent = { enable = true },
 
 			-- This is a block of code that is still not functioning. Most likely due to plugin re-write.

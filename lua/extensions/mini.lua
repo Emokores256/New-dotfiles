@@ -29,7 +29,7 @@ return {
 			use_icons = vim.g.have_nerd_font,
 
 			-- Rewrite and reconfig for mini.statusline to match material theme.
-			-- -- NOTE: This might not be necessary, since there's a "mini" declaration in the plugins listing.
+			-- NOTE: This might not be necessary, since there's a "mini" declaration in the plugins listing.
 			-- vim.api.nvim_create_autocmd("ColorScheme", {
 			-- 	pattern = "material",
 			-- 	callback = function()

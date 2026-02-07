@@ -8,6 +8,9 @@ vim.keymap.set("n", "<leader>A", function()
 	require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.outer")
 end)
 
+-- LSP functions
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
+
 -- keymaps for fzf
 vim.keymap.set("n", "<leader>ff", function()
 	require("fzf-lua").files()
@@ -44,6 +47,12 @@ end, { desc = "[F]ind [R]esume" })
 vim.keymap.set("n", "gl", function()
 	vim.diagnostic.open_float()
 end, { desc = "Open the next diagnostic in floated window" })
+
+-- Pane navigaitons
+vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true, desc = "Move to left pane" })
+vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true, desc = "Move to lower pane" })
+vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true, desc = "Move to upper pane" })
+vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true, desc = "Move to right pane" })
 
 -- Buffer manipulation keymaps
 vim.keymap.set("n", "<C-x>", ":bd<CR>", { silent = true, desc = "Closes current buffer" })

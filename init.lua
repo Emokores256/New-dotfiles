@@ -3,12 +3,17 @@ vim.o.relativenumber = true -- use relative line numbers
 vim.o.confirm = true -- confirm commands
 vim.o.expandtab = true -- convert tabs to spaces
 vim.o.shiftwidth = 4 -- amount to indent with << and >>
+vim.o.autoindent = true
 
 vim.o.tabstop = 4 -- how many space are shown per tab
 vim.o.softtabstop = 4 -- How many spaces are applied when pressing tab
 vim.o.smarttab = true
-vim.o.smartindent = true
-vim.o.autoindent = true -- keep indentation from previous line
+vim.o.smartindent = true -- Use smart indentation that understands code structure (functions, if statements, etc.)
+vim.o.cindent = true -- For even smarter c-style logic
+vim.o.autoindent = true -- automatic indentation
+vim.o.copyindent = true -- Copy indentation from previous line
+
+vim.cmd("filetype plugin indent on") -- Load file-type specific indent settings
 
 vim.o.cursorline = true
 vim.o.undofile = true -- store undos between sessions
@@ -57,6 +62,14 @@ vim.api.nvim_create_autocmd("FileType", {
 	},
 	callback = function()
 		vim.treesitter.start()
+		vim.opt_local.autoindent = true
+		vim.opt_local.smartindent = true
+		-- Uncomment the next line if you want to KILL any plugin's custom logic
+		vim.opt_local.indentexpr = ""
+		-- Ensure "o" and "O" (opening new lines) always trigger an indent check
+		vim.opt_local.indentkeys:append("o,O")
+		-- Explicitly tell PHP to use 4-space indentation for classes
+		vim.opt_local.cinoptions = "g0,t0,(0,w1"
 	end,
 })
 
@@ -71,8 +84,10 @@ vim.g.material_style = "darker"
 -- Load lazy.nvim to lazy load the rest of the extensions
 require("config.lazy")
 
+vim.g.lazyvim_php_lsp = "intelephense"
+
 -- load theme:
-vim.cmd("colorscheme palenight") -- or vim.cmd.colorscheme("your_theme")
+vim.cmd("colorscheme vague") -- or vim.cmd.colorscheme("your_theme")
 
 -- BlinkCmp autocomplete menu styling
 vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })

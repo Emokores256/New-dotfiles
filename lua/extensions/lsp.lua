@@ -128,6 +128,12 @@ return {
 					--
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+					-- for phpactor to display inlay hints
+					if client and client.server_capabilities.inlayHintProvider then
+						vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+					end
+
 					if
 						client
 						and client_supports_method(
@@ -218,11 +224,37 @@ return {
 			--  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
 			--  - settings (table): Override the default settings passed when initializing the server.
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+			local lspconfig = require("lspconfig")
+
 			local servers = {
 				intelephense = {
 					init_options = {
 						globalStoragePath = "/usr/bin/intelephense",
 						licenseKey = "~/intelephense/licence.txt",
+						files = { maxSize = 5000000 }, -- Increase limit for large vendor folders
+						diagnostics = { enable = true },
+						telemetry = { enabled = false },
+						completion = { fullyQualifyGlobalConstantsAndFunctions = true },
+					},
+				},
+				phpactor = {
+					cmd = { "phpactor", "language-server" },
+					filetypes = { "php" },
+					root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+					on_attach = function(client, _bufnr)
+						-- Disable features provided by Intelephense to prevent overlap
+						client.server_capabilities.completionProvider = false
+						client.server_capabilities.hoverProvider = false
+						client.server_capabilities.definitionProvider = false
+						client.server_capabilities.referencesProvider = false
+						client.server_capabilities.documentSymbolProvider = false
+						client.server_capabilities.diagnosticProvider = false
+					end,
+					init_options = {
+						-- Disable internal Phpactor analysis tools that cause duplicate warnings
+						["language_server_phpstan.enabled"] = false,
+						["language_server_psalm.enabled"] = false,
 					},
 				},
 				tailwindcss = {},
@@ -291,7 +323,8 @@ return {
 
 			require("mason-lspconfig").setup({
 				ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-				automatic_installation = false,
+				automatic_installation = true,
+				-- auomatic_enable = { exclude = { "intelephense" } },
 				handlers = {
 					function(server_name)
 						local server = servers[server_name] or {}

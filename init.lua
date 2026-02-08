@@ -5,6 +5,8 @@ vim.o.expandtab = true -- convert tabs to spaces
 vim.o.shiftwidth = 4 -- amount to indent with << and >>
 vim.o.autoindent = true
 
+vim.o.winborder = "rounded" -- ensures documentation window borders are rounded
+
 vim.o.tabstop = 4 -- how many space are shown per tab
 vim.o.softtabstop = 4 -- How many spaces are applied when pressing tab
 vim.o.smarttab = true
@@ -90,15 +92,32 @@ vim.lsp.enable("phpactor")
 -- load theme:
 vim.cmd("colorscheme kanagawa-paper") -- or vim.cmd.colorscheme("your_theme")
 
+-- FLOATING WINDOW STYLING
+-- NOTE: The following pieces of code define the floating menu configuration (documentation, autocomplete)
+
+-- -- Define the border style once
+-- local HOVER_BORDER_STYLE = "rounded" -- Or "single", "double", "shadow"
+--
+-- -- Override the default LSP hover handler to include a border
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+-- 	border = HOVER_BORDER_STYLE,
+-- })
+--
+-- -- Also apply this to signature help (which often appears as a float)
+-- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+-- 	border = HOVER_BORDER_STYLE,
+-- })
+
 -- BlinkCmp autocomplete menu styling
 -- Ensure floating windows match your editor's background. You can manually change the coloring of the menu selection and border.
 
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#343336" })
 -- vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#78797a" })
-vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#78797a" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#78797a", bold = true })
-vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#5f87ff", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#343336", bg = "NONE" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#343336" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#343336", bold = true })
+vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#343336", bg = "#1e1e2e" })
 
 -- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
 -- 	callback = function()

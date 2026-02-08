@@ -241,7 +241,8 @@ return {
 				phpactor = {
 					cmd = { "phpactor", "language-server" },
 					filetypes = { "php" },
-					root_dir = lspconfig.util.root_pattern("composer.json", ".git"),
+					root_dir = lspconfig.util.root_pattern("composer.json", ".git", ".phpactor.json", ".phpactor.yml"),
+					workspace_required = true,
 					on_attach = function(client, _bufnr)
 						-- Disable features provided by Intelephense to prevent overlap
 						client.server_capabilities.completionProvider = false

@@ -85,6 +85,7 @@ vim.g.material_style = "darker"
 require("config.lazy")
 
 vim.g.lazyvim_php_lsp = "intelephense"
+vim.lsp.enable("phpactor")
 
 -- load theme:
 vim.cmd("colorscheme vague") -- or vim.cmd.colorscheme("your_theme")

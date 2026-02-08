@@ -79,22 +79,22 @@ return {
 				auto_show_delay_ms = 500,
 				treesitter_highlighting = true,
 				window = {
-					border = nil,
-					winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
+					border = "rounded",
+					-- winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
 					winblend = 0,
 					scrollbar = true,
 				},
 			},
 			ghost_text = { enabled = true, show_with_menu = false },
 			menu = {
-				border = nil,
-				winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
+				border = "rounded",
+				-- winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
 				scrollbar = true,
 				auto_show_delay_ms = 0,
 				draw = {
 					columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
-					padding = 1,
-					gap = 1,
+					-- padding = 1,
+					-- gap = 1,
 					treesitter = { "lsp" },
 					components = {
 						label = {

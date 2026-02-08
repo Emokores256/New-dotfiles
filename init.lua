@@ -88,12 +88,16 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.lsp.enable("phpactor")
 
 -- load theme:
-vim.cmd("colorscheme vague") -- or vim.cmd.colorscheme("your_theme")
+vim.cmd("colorscheme kanagawa-paper") -- or vim.cmd.colorscheme("your_theme")
 
 -- BlinkCmp autocomplete menu styling
-vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#5f87ff", bg = "#000000" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#5f87ff", bold = true })
+-- Ensure floating windows match your editor's background. You can manually change the coloring of the menu selection and border.
+
+vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
+-- vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#78797a" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#78797a" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#78797a", bold = true })
 vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#5f87ff", bg = "#1e1e2e" })
 
 -- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {

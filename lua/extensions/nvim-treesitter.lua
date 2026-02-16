@@ -15,8 +15,8 @@ return {
 				"luadoc",
 				"vim",
 				"vimdoc",
-				"mackdown",
-				"mackdown_inline",
+				"markdown",
+				"markdown_inline",
 				"query",
 				"html",
 				"css",
@@ -29,11 +29,10 @@ return {
 				"phpdoc",
 			},
 			sync_install = false,
-			auto_intall = true,
+			auto_install = true,
 			highlight = { enable = true, additional_vim_regex_highlighting = true },
 			indent = { enable = true },
 
-			-- This is a block of code that is still not functioning. Most likely due to plugin re-write.
 			incremental_selection = {
 				enable = true,
 				keymaps = {

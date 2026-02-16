@@ -33,6 +33,14 @@ vim.o.signcolumn = "yes" -- enable sign column always
 
 vim.opt.autowriteall = true -- enable auto-save
 
+vim.g.markdown_fenced_languages = {
+	"lua",
+	"php",
+	"javascript",
+	"typescript",
+	"json",
+}
+
 -- Autosave after leaving insert mode
 vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
 	group = vim.api.nvim_create_augroup("AutoSave", { clear = true }),
@@ -53,7 +61,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"php",
 		"lua",
-		"markdown",
 		"css",
 		"scss",
 		"javascript",
@@ -61,18 +68,34 @@ vim.api.nvim_create_autocmd("FileType", {
 		"typescript",
 		"typescriptreact",
 		"html",
+		"markdown",
 	},
 	callback = function()
 		vim.treesitter.start()
 		vim.opt_local.autoindent = true
 		vim.opt_local.smartindent = true
-		-- Uncomment the next line if you want to KILL any plugin's custom logic
 		vim.opt_local.indentexpr = ""
-		-- Ensure "o" and "O" (opening new lines) always trigger an indent check
 		vim.opt_local.indentkeys:append("o,O")
-		-- Explicitly tell PHP to use 4-space indentation for classes
 		vim.opt_local.cinoptions = "g0,t0,(0,w1"
 	end,
+})
+
+-- Enable markdown treesitter for Avante filetype
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "Avante",
+	callback = function()
+		vim.treesitter.start(nil, "markdown")
+	end,
+})
+
+-- Lua example for auto-reloading modified files in Neovim
+vim.api.nvim_create_autocmd({ "FocusGained", "TermLeave", "BufEnter", "WinEnter", "CursorHold", "CursorHoldI" }, {
+	callback = function()
+		if vim.bo.modified then
+			vim.cmd("checktime")
+		end
+	end,
+	group = vim.api.nvim_create_augroup("KiloCodeAutoReload", { clear = true }),
 })
 
 vim.o.splitright = true
@@ -90,52 +113,24 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.lsp.enable("phpactor")
 
 -- load theme:
-vim.cmd("colorscheme kanagawa-paper") -- or vim.cmd.colorscheme("your_theme")
+vim.cmd("colorscheme catppuccin-mocha") -- or vim.cmd.colorscheme("your_theme")
 
 -- FLOATING WINDOW STYLING
 -- NOTE: The following pieces of code define the floating menu configuration (documentation, autocomplete)
 
--- -- Define the border style once
--- local HOVER_BORDER_STYLE = "rounded" -- Or "single", "double", "shadow"
---
--- -- Override the default LSP hover handler to include a border
--- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
--- 	border = HOVER_BORDER_STYLE,
--- })
---
--- -- Also apply this to signature help (which often appears as a float)
--- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
--- 	border = HOVER_BORDER_STYLE,
--- })
-
 -- BlinkCmp autocomplete menu styling
 -- Ensure floating windows match your editor's background. You can manually change the coloring of the menu selection and border.
-
+-- vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#4d4c46", bg = "NONE" })
+vim.api.nvim_set_hl(0, "LspInlayHint", { fg = "#6f717a", bg = "NONE" })
 vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#343336" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#37498a", bg = "NONE" })
 -- vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#343336", bg = "NONE" })
-vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#343336" })
-vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#343336", bold = true })
-vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#343336", bg = "#1e1e2e" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#37498a", bg = "NONE" })
+vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { fg = "#37498a" })
+vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#7383c9", bg = "#3e4766", bold = true })
+vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#37498a", bg = "#37498a" })
 
--- vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
--- 	callback = function()
--- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuShadow", { bg = "#000000", blend = 50 })
--- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { fg = "#5f87ff", bg = "NONE" })
--- 		vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { fg = "#ffffff", bg = "#5f87ff", bold = true })
--- 		vim.api.nvim_set_hl(0, "BlinkCmpScrollBarThumb", { fg = "#5f87ff", bg = "#1e1e2e" })
--- 	end,
--- })
-
--- semantic token fixes
--- vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "Function" })
--- vim.api.nvim_set_hl(0, "@lsp.type.method", { link = "Function" })
---
--- -- For future auto theme switches
--- vim.api.nvim_create_autocmd("ColorScheme", {
--- 	callback = function()
--- 		vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "Function" })
--- 		vim.api.nvim_set_hl(0, "@lsp.type.method", { link = "Function" })
--- 	end,
--- })
+-- For Avante.nvim:
+-- Change the foreground color to make the "border" more prominent
+vim.api.nvim_set_hl(0, "AvanteSidebarWinSeparator", { fg = "#565f89", bg = "NONE" })
+-- vim.api.nvim_set_hl(0, "AvanteSidebarWinHorizontalSeparator", { fg = "#565f89", bg = "NONE" })

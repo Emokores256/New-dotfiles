@@ -30,39 +30,39 @@ return {
 
 			-- Rewrite and reconfig for mini.statusline to match material theme.
 			-- NOTE: This might not be necessary, since there's a "mini" declaration in the plugins listing.
-			-- vim.api.nvim_create_autocmd("ColorScheme", {
-			-- 	pattern = "material",
-			-- 	callback = function()
-			-- 		local material = require("material.colors")
-			--
-			-- 		vim.api.nvim_set_hl(0, "MiniStatuslineMode", {
-			-- 			fg = material.editor.bg,
-			-- 			bg = material.main.blue,
-			-- 			bold = true,
-			-- 		})
-			--
-			-- 		vim.api.nvim_set_hl(
-			-- 			0,
-			-- 			"MiniStatuslineDevinfo",
-			-- 			{ fg = material.editor.fg, bg = material.main.cyan }
-			-- 		)
-			-- 		vim.api.nvim_set_hl(
-			-- 			0,
-			-- 			"MiniStatuslineFilename",
-			-- 			{ fg = material.editor.fg, bg = material.main.green }
-			-- 		)
-			-- 		vim.api.nvim_set_hl(
-			-- 			0,
-			-- 			"MiniStatuslineFileinfo",
-			-- 			{ fg = material.editor.fg, bg = material.main.yellow }
-			-- 		)
-			-- 		vim.api.nvim_set_hl(
-			-- 			0,
-			-- 			"MiniStatuslineInactive",
-			-- 			{ fg = material.editor.fg_dark, bg = material.editor.bg_alt }
-			-- 		)
-			-- 	end,
-			-- }),
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				pattern = "material",
+				callback = function()
+					local material = require("material.colors")
+
+					vim.api.nvim_set_hl(0, "MiniStatuslineMode", {
+						fg = material.editor.bg,
+						bg = material.main.blue,
+						bold = true,
+					})
+
+					vim.api.nvim_set_hl(
+						0,
+						"MiniStatuslineDevinfo",
+						{ fg = material.editor.fg, bg = material.main.cyan }
+					)
+					vim.api.nvim_set_hl(
+						0,
+						"MiniStatuslineFilename",
+						{ fg = material.editor.fg, bg = material.main.green }
+					)
+					vim.api.nvim_set_hl(
+						0,
+						"MiniStatuslineFileinfo",
+						{ fg = material.editor.fg, bg = material.main.yellow }
+					)
+					vim.api.nvim_set_hl(
+						0,
+						"MiniStatuslineInactive",
+						{ fg = material.editor.fg_dark, bg = material.editor.bg_alt }
+					)
+				end,
+			}),
 		})
 
 		-- You can configure sections in the statusline by overriding their

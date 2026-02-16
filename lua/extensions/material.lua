@@ -11,6 +11,9 @@ return {
 				"blink",
 			},
 			contrast = { filetypes = { "php", "lua", "javascript", "css", "typescript" } },
+			styles = {
+				comments = { italic = true },
+			},
 		})
 		-- vim.cmd("colorscheme material")
 	end,

@@ -32,12 +32,12 @@ require("lazy").setup({
 	-- install = { colorscheme = { "kanagawa" } },
 	-- install = { colorscheme = { "vague" } },
 	-- install = { colorscheme = { "everblush" } },
-	install = { colorscheme = { "kanagawa-paper" } },
+	-- install = { colorscheme = { "kanagawa-paper" } },
 	-- install = { colorscheme = { "material" } },
 	-- install = { colorscheme = { "OceanicNext" } },
 	-- install = { colorscheme = { "palenight" } },
 	-- install = { colorscheme = { "darcula" } },
-	-- install = { colorscheme = { "catppuccin-frappe" } },
+	install = { colorscheme = { "catppuccin-mocha" } },
 
 	-- automatically check for plugin updates
 	checker = { enabled = true },

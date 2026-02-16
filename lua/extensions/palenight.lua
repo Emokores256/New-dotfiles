@@ -4,4 +4,6 @@ return {
 	config = function()
 		-- vim.cmd("colorscheme palenight")
 	end,
+	cterm_palette = "auto",
+	italic = true,
 }

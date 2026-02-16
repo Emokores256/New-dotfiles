@@ -5,5 +5,11 @@ return {
 	init = function()
 		-- vim.cmd.colorscheme("kanagawa-paper-ink")
 	end,
-	opts = { ... },
+	opts = {
+		-- diag_background = false, -- background for diagnostic text
+		-- transparent = true,
+		-- styles = {
+		-- 	comment = { true },
+		-- },
+	},
 }

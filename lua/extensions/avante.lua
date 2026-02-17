@@ -28,10 +28,12 @@ return {
 				start_insert = true,
 			},
 		},
+		input = {
+			provider = "snacks",
+		},
 	},
 	selector = {
 		provider = "fzf",
-		provider_opts = {},
 	},
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
@@ -40,6 +42,7 @@ return {
 		"nvim-mini/mini.pick",
 		"ibhagwan/fzf-lua",
 		"folke/snacks.nvim",
+		"echasnovski/mini.icons",
 		{
 			"HakonHarnes/img-clip.nvim",
 			event = "VeryLazy",

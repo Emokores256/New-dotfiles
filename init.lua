@@ -68,7 +68,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"typescript",
 		"typescriptreact",
 		"html",
-		"markdown",
 	},
 	callback = function()
 		vim.treesitter.start()

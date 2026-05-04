@@ -6,13 +6,13 @@ return {
 	version = false,
 	opts = {
 		instructions_file = "avante.md",
-		provider = "kilocode",
+		provider = "opencode",
 		providers = {
-			kilocode = {
+			opencode = {
 				__inherited_from = "openai",
-				api_key_name = "AVANTE_KILOGATEWEAY_API_KEY",
-				endpoint = "https://api.kilo.ai/api/gateway",
-				model = "minimax/minimax-m2.5:free",
+				-- api_key_name = "AVANTE_KILOGATEWEAY_API_KEY", -- set in .basrc
+				endpoint = "https://api.minimax.io/anthropic/v1",
+				model = "MiniMax-M2.5",
 			},
 		},
 		windows = {

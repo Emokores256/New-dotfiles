@@ -57,6 +57,7 @@ return {
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 			--    function will be executed to configure the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {
+
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
 					-- NOTE: Remember that Lua is a real programming language, and as such it is possible
@@ -129,9 +130,14 @@ return {
 					-- When you move your cursor, the highlights will be cleared (the second autocommand).
 					local client = vim.lsp.get_client_by_id(event.data.client_id)
 
+					-- to prevent LSP runtime errors:
+					-- vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+
 					-- for phpactor to display inlay hints
 					if client and client.server_capabilities.inlayHintProvider then
 						vim.lsp.inlay_hint.enable(true, { bufnr = event.buf })
+						-- to prevent LSP runtime errors for inlay hints:
+						vim.lsp.inlay_hint.enable = vim.schedule_wrap(vim.lsp.inlay_hint.enable)
 					end
 
 					if

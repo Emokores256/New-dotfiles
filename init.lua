@@ -36,6 +36,7 @@ vim.opt.autowriteall = true -- enable auto-save
 vim.g.markdown_fenced_languages = {
 	"lua",
 	"php",
+	"blade",
 	"javascript",
 	"typescript",
 	"json",
@@ -60,6 +61,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost" }, {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"php",
+		"blade",
 		"lua",
 		"css",
 		"scss",
@@ -112,7 +114,7 @@ vim.g.lazyvim_php_lsp = "intelephense"
 vim.lsp.enable("phpactor")
 
 -- load theme:
-vim.cmd("colorscheme catppuccin-mocha") -- or vim.cmd.colorscheme("your_theme")
+vim.cmd("colorscheme kanagawa-wave") -- or vim.cmd.colorscheme("your_theme")
 
 -- FLOATING WINDOW STYLING
 -- NOTE: The following pieces of code define the floating menu configuration (documentation, autocomplete)

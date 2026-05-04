@@ -11,6 +11,9 @@ end)
 -- LSP functions
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP Code Actions" })
 
+-- Database manager
+vim.keymap.set({ "n", "v" }, "<leader>db", require("dbee").open())
+
 -- keymaps for fzf
 vim.keymap.set("n", "<leader>ff", function()
 	require("fzf-lua").files()

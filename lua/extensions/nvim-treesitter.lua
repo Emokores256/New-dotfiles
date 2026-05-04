@@ -27,6 +27,7 @@ return {
 				"php",
 				"php_only",
 				"phpdoc",
+				"blade",
 			},
 			sync_install = false,
 			auto_install = true,
